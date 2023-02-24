@@ -4,7 +4,13 @@
  */
 package lab5p2_víctorromero;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeNode;
 
 /**
  *
@@ -17,6 +23,9 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
+        this.pack();
+        this.setLocationRelativeTo(this);
+
     }
 
     /**
@@ -29,6 +38,12 @@ public class MainScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         ListarPersonaje = new javax.swing.JFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_Personajes = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        Agregar1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Jt_Nombre = new javax.swing.JTextField();
         Poder = new javax.swing.JLabel();
         Poder1 = new javax.swing.JLabel();
@@ -52,16 +67,43 @@ public class MainScreen extends javax.swing.JFrame {
         Batalla = new javax.swing.JLabel();
         MainScree = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout ListarPersonajeLayout = new javax.swing.GroupLayout(ListarPersonaje.getContentPane());
-        ListarPersonaje.getContentPane().setLayout(ListarPersonajeLayout);
-        ListarPersonajeLayout.setHorizontalGroup(
-            ListarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        ListarPersonajeLayout.setVerticalGroup(
-            ListarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        ListarPersonaje.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personajes");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("DC");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Marvel");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Caprom");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("MK");
+        treeNode1.add(treeNode2);
+        jt_Personajes.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_Personajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_PersonajesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jt_Personajes);
+
+        ListarPersonaje.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 340, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        ListarPersonaje.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 320, 360));
+
+        Agregar1.setBackground(new java.awt.Color(255, 0, 0));
+        Agregar1.setFont(new java.awt.Font("Impact", 0, 75)); // NOI18N
+        Agregar1.setForeground(new java.awt.Color(255, 255, 255));
+        Agregar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Agregar1.setText("LISTAR PERSONAJES");
+        Agregar1.setOpaque(true);
+        ListarPersonaje.getContentPane().add(Agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 80));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5p2_víctorromero/Imagenes/MainScreen.jpg"))); // NOI18N
+        ListarPersonaje.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -262,9 +304,81 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jB_Agregar1MouseClicked
 
     private void jB_Agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Agregar1ActionPerformed
-        MainScree.setVisible(false);
-        Listar.setVisible(true);
+        DefaultTreeModel m = (DefaultTreeModel) jt_Personajes.getModel();
+
+        DefaultMutableTreeNode raiz
+                = (DefaultMutableTreeNode) m.getRoot();
+
+        DefaultMutableTreeNode nodo_personaje;
+
+        for (Personajes personaje : personajes) {
+            switch (personaje.getUniverso()) {
+                case "DC": {
+                    nodo_personaje = new DefaultMutableTreeNode(personaje.getNombre());
+                    ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(nodo_personaje);
+                }
+                break;
+
+                case "Marvel": {
+                    nodo_personaje = new DefaultMutableTreeNode(personaje.getNombre());
+                    ((DefaultMutableTreeNode) raiz.getChildAt(1)).add(nodo_personaje);
+                }
+                break;
+
+                case "MK": {
+                    nodo_personaje = new DefaultMutableTreeNode(personaje.getNombre());
+                    ((DefaultMutableTreeNode) raiz.getChildAt(3)).add(nodo_personaje);
+                }
+                break;
+
+                case "Capcom": {
+                    nodo_personaje = new DefaultMutableTreeNode(personaje.getNombre());
+                    ((DefaultMutableTreeNode) raiz.getChildAt(2)).add(nodo_personaje);
+                }
+                break;
+            }
+
+            m.reload();
+
+            setVisible(false);
+            ListarPersonaje.setVisible(true);
+            ListarPersonaje.pack();
+            ListarPersonaje.setLocationRelativeTo(this);
+
     }//GEN-LAST:event_jB_Agregar1ActionPerformed
+    }
+    private void jt_PersonajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_PersonajesMouseClicked
+        String n="";
+        try{
+            n = jt_Personajes.getSelectionPath().getLastPathComponent().toString();
+        }catch(Exception e){
+            System.out.println("");
+        }
+        
+      // String x = n.toString();
+        System.out.println(n);
+        String nuilaGay="";
+        //esta line la puso Eduardo, no te enojes <3
+        for (int i = 0; i < personajes.size(); i++) {
+            if(personajes.get(i).getNombre().equals(n)){
+                nuilaGay=personajes.get(i).toString();
+            }
+        }
+        
+        if (n.toString() != "DC" && n.toString() != "Marvel" && n.toString() != "Capcom" && n.toString() != "MK") {
+        //   Personajes p = (Personajes) n;
+            jTextArea1.append(nuilaGay);
+//            jTextArea1.append(p.getPoder());
+//            jTextArea1.append(p.getDebilidad());
+//            jTextArea1.append(p.getUniverso());
+//            jTextArea1.append(p.getFuerza() + "");
+//            jTextArea1.append(p.getFuerza() + "");
+//            jTextArea1.append(p.getFuerza() + "");
+            jTextArea1.append("____________________________\n"
+                    + "");
+            
+        }
+    }//GEN-LAST:event_jt_PersonajesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -304,6 +418,7 @@ public class MainScreen extends javax.swing.JFrame {
     ArrayList<Personajes> personajes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Agregar;
+    private javax.swing.JLabel Agregar1;
     private javax.swing.JLabel Batalla;
     private javax.swing.JTextField Jt_Debilidad;
     private javax.swing.JTextField Jt_Nombre;
@@ -322,9 +437,14 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton jB_Agregar;
     private javax.swing.JButton jB_Agregar1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JFormattedTextField jft_Fisica;
     private javax.swing.JFormattedTextField jft_Fuerza;
     private javax.swing.JFormattedTextField jft_Mental;
     private javax.swing.JFormattedTextField jft_Vida;
+    private javax.swing.JTree jt_Personajes;
     // End of variables declaration//GEN-END:variables
 }
