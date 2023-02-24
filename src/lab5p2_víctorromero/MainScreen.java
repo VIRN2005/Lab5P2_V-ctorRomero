@@ -28,6 +28,7 @@ public class MainScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ListarPersonaje = new javax.swing.JFrame();
         Jt_Nombre = new javax.swing.JTextField();
         Poder = new javax.swing.JLabel();
         Poder1 = new javax.swing.JLabel();
@@ -45,11 +46,22 @@ public class MainScreen extends javax.swing.JFrame {
         Name = new javax.swing.JLabel();
         Poder7 = new javax.swing.JLabel();
         jft_Vida = new javax.swing.JFormattedTextField();
+        jB_Agregar1 = new javax.swing.JButton();
+        jB_Agregar = new javax.swing.JButton();
         Agregar = new javax.swing.JLabel();
-        Listar = new javax.swing.JLabel();
         Batalla = new javax.swing.JLabel();
-        Agregar3 = new javax.swing.JLabel();
         MainScree = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout ListarPersonajeLayout = new javax.swing.GroupLayout(ListarPersonaje.getContentPane());
+        ListarPersonaje.getContentPane().setLayout(ListarPersonajeLayout);
+        ListarPersonajeLayout.setHorizontalGroup(
+            ListarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        ListarPersonajeLayout.setVerticalGroup(
+            ListarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,6 +159,38 @@ public class MainScreen extends javax.swing.JFrame {
         jft_Vida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jft_Vida, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 140, 30));
 
+        jB_Agregar1.setBackground(new java.awt.Color(255, 0, 0));
+        jB_Agregar1.setFont(new java.awt.Font("Impact", 0, 55)); // NOI18N
+        jB_Agregar1.setForeground(new java.awt.Color(255, 255, 255));
+        jB_Agregar1.setText("LISTAR");
+        jB_Agregar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_Agregar1MouseClicked(evt);
+            }
+        });
+        jB_Agregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_Agregar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_Agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 530, 240, 70));
+
+        jB_Agregar.setBackground(new java.awt.Color(255, 0, 0));
+        jB_Agregar.setFont(new java.awt.Font("Impact", 0, 55)); // NOI18N
+        jB_Agregar.setForeground(new java.awt.Color(255, 255, 255));
+        jB_Agregar.setText("AGREGAR ");
+        jB_Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_AgregarMouseClicked(evt);
+            }
+        });
+        jB_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_AgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 240, 70));
+
         Agregar.setBackground(new java.awt.Color(255, 0, 0));
         Agregar.setFont(new java.awt.Font("Impact", 0, 75)); // NOI18N
         Agregar.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,21 +198,6 @@ public class MainScreen extends javax.swing.JFrame {
         Agregar.setText("AGREGAR PERSONAJE");
         Agregar.setOpaque(true);
         getContentPane().add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 80));
-
-        Listar.setBackground(new java.awt.Color(255, 0, 0));
-        Listar.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
-        Listar.setForeground(new java.awt.Color(255, 255, 255));
-        Listar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Listar.setText("LISTAR");
-        Listar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Listar.setOpaque(true);
-        Listar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ListarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 240, 70));
-        Listar.getAccessibleContext().setAccessibleDescription("");
 
         Batalla.setBackground(new java.awt.Color(255, 0, 0));
         Batalla.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
@@ -184,32 +213,12 @@ public class MainScreen extends javax.swing.JFrame {
         });
         getContentPane().add(Batalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 240, 70));
 
-        Agregar3.setBackground(new java.awt.Color(255, 0, 0));
-        Agregar3.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
-        Agregar3.setForeground(new java.awt.Color(255, 255, 255));
-        Agregar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Agregar3.setText("AGREGAR ");
-        Agregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Agregar3.setOpaque(true);
-        Agregar3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Agregar3MouseClicked(evt);
-            }
-        });
-        getContentPane().add(Agregar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 240, 70));
-
         MainScree.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5p2_víctorromero/Imagenes/MainScreen.jpg"))); // NOI18N
         MainScree.setText("jLabel1");
         getContentPane().add(MainScree, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 795, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListarMouseClicked
-        MainScree.setVisible(false);
-        Listar.setVisible(true);
-//        Listar.setLoca
-    }//GEN-LAST:event_ListarMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -219,7 +228,11 @@ public class MainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BatallaMouseClicked
 
-    private void Agregar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Agregar3MouseClicked
+    private void jB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_AgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jB_AgregarActionPerformed
+
+    private void jB_AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_AgregarMouseClicked
         int index = 0;
         index = jComboBox1.getSelectedIndex();
         personajes.add(
@@ -239,9 +252,19 @@ public class MainScreen extends javax.swing.JFrame {
         jft_Fisica.setText("");
         jft_Mental.setText("");
         jft_Vida.setText("");
-        
+
         System.out.println(personajes);
-    }//GEN-LAST:event_Agregar3MouseClicked
+    }//GEN-LAST:event_jB_AgregarMouseClicked
+
+    private void jB_Agregar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_Agregar1MouseClicked
+        MainScree.setVisible(false);
+        ListarPersonaje.setVisible(true);
+    }//GEN-LAST:event_jB_Agregar1MouseClicked
+
+    private void jB_Agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Agregar1ActionPerformed
+        MainScree.setVisible(false);
+        Listar.setVisible(true);
+    }//GEN-LAST:event_jB_Agregar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,16 +300,15 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
     }
-    
+
     ArrayList<Personajes> personajes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Agregar;
-    private javax.swing.JLabel Agregar3;
     private javax.swing.JLabel Batalla;
     private javax.swing.JTextField Jt_Debilidad;
     private javax.swing.JTextField Jt_Nombre;
     private javax.swing.JTextField Jt_Poder;
-    private javax.swing.JLabel Listar;
+    private javax.swing.JFrame ListarPersonaje;
     private javax.swing.JLabel MainScree;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Poder;
@@ -297,6 +319,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel Poder5;
     private javax.swing.JLabel Poder6;
     private javax.swing.JLabel Poder7;
+    private javax.swing.JButton jB_Agregar;
+    private javax.swing.JButton jB_Agregar1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFormattedTextField jft_Fisica;
     private javax.swing.JFormattedTextField jft_Fuerza;
