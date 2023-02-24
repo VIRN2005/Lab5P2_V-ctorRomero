@@ -98,7 +98,7 @@ public class Personajes {
                 + "Fuerza -> " + fuerza + "\n"
                 + "Agilidad Fisica -> " + agilidadFisica + "\n"
                 + "Agilidad Mental -> " + agilidadMental + "\n"
-                + "Vida=" + vida + "\n"
+                + "Vida -> " + vida + "\n"
                 + "____________________________________________________";
     }
 
