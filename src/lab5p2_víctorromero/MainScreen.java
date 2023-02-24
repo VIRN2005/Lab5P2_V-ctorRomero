@@ -35,18 +35,20 @@ public class MainScreen extends javax.swing.JFrame {
         Poder2 = new javax.swing.JLabel();
         Jt_Debilidad = new javax.swing.JTextField();
         Poder3 = new javax.swing.JLabel();
-        Jt_Universo = new javax.swing.JTextField();
         Poder4 = new javax.swing.JLabel();
         jft_Fuerza = new javax.swing.JFormattedTextField();
         Poder5 = new javax.swing.JLabel();
         jft_Fisica = new javax.swing.JFormattedTextField();
         Poder6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jft_Mental = new javax.swing.JFormattedTextField();
         Name = new javax.swing.JLabel();
         Poder7 = new javax.swing.JLabel();
         jft_Vida = new javax.swing.JFormattedTextField();
         Agregar = new javax.swing.JLabel();
-        Agregar1 = new javax.swing.JLabel();
+        Listar = new javax.swing.JLabel();
+        Batalla = new javax.swing.JLabel();
+        Agregar3 = new javax.swing.JLabel();
         MainScree = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,7 +88,6 @@ public class MainScreen extends javax.swing.JFrame {
         Poder3.setText("Universo");
         Poder3.setOpaque(true);
         getContentPane().add(Poder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 110, 30));
-        getContentPane().add(Jt_Universo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 670, 30));
 
         Poder4.setBackground(new java.awt.Color(255, 255, 255));
         Poder4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -118,6 +119,14 @@ public class MainScreen extends javax.swing.JFrame {
         Poder6.setOpaque(true);
         getContentPane().add(Poder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 140, 30));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "Caprom", "MK" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 670, 30));
+
         jft_Mental.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jft_Mental, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, 140, 30));
 
@@ -139,27 +148,55 @@ public class MainScreen extends javax.swing.JFrame {
         getContentPane().add(jft_Vida, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 140, 30));
 
         Agregar.setBackground(new java.awt.Color(255, 0, 0));
-        Agregar.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
+        Agregar.setFont(new java.awt.Font("Impact", 0, 75)); // NOI18N
         Agregar.setForeground(new java.awt.Color(255, 255, 255));
         Agregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Agregar.setText("AGREGAR ");
-        Agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregar.setText("AGREGAR PERSONAJE");
         Agregar.setOpaque(true);
-        Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        getContentPane().add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 80));
+
+        Listar.setBackground(new java.awt.Color(255, 0, 0));
+        Listar.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
+        Listar.setForeground(new java.awt.Color(255, 255, 255));
+        Listar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Listar.setText("LISTAR");
+        Listar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Listar.setOpaque(true);
+        Listar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgregarMouseClicked(evt);
+                ListarMouseClicked(evt);
             }
         });
-        getContentPane().add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 270, 70));
-        Agregar.getAccessibleContext().setAccessibleDescription("");
+        getContentPane().add(Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 240, 70));
+        Listar.getAccessibleContext().setAccessibleDescription("");
 
-        Agregar1.setBackground(new java.awt.Color(255, 0, 0));
-        Agregar1.setFont(new java.awt.Font("Impact", 0, 75)); // NOI18N
-        Agregar1.setForeground(new java.awt.Color(255, 255, 255));
-        Agregar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Agregar1.setText("AGREGAR PERSONAJE");
-        Agregar1.setOpaque(true);
-        getContentPane().add(Agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 80));
+        Batalla.setBackground(new java.awt.Color(255, 0, 0));
+        Batalla.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
+        Batalla.setForeground(new java.awt.Color(255, 255, 255));
+        Batalla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Batalla.setText("BATALLA");
+        Batalla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Batalla.setOpaque(true);
+        Batalla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BatallaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Batalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 240, 70));
+
+        Agregar3.setBackground(new java.awt.Color(255, 0, 0));
+        Agregar3.setFont(new java.awt.Font("Impact", 0, 60)); // NOI18N
+        Agregar3.setForeground(new java.awt.Color(255, 255, 255));
+        Agregar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Agregar3.setText("AGREGAR ");
+        Agregar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregar3.setOpaque(true);
+        Agregar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Agregar3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Agregar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 240, 70));
 
         MainScree.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5p2_víctorromero/Imagenes/MainScreen.jpg"))); // NOI18N
         MainScree.setText("jLabel1");
@@ -168,19 +205,43 @@ public class MainScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseClicked
+    private void ListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListarMouseClicked
+        MainScree.setVisible(false);
+        Listar.setVisible(true);
+//        Listar.setLoca
+    }//GEN-LAST:event_ListarMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void BatallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BatallaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BatallaMouseClicked
+
+    private void Agregar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Agregar3MouseClicked
+        int index = 0;
+        index = jComboBox1.getSelectedIndex();
         personajes.add(
                 new Personajes(Jt_Nombre.getText(),
                         Jt_Poder.getText(),
                         Jt_Debilidad.getText(),
-                        Jt_Universo.getText(),
+                        jComboBox1.getItemAt(index),
                         Integer.parseInt(jft_Fuerza.getText()),
                         Integer.parseInt(jft_Fisica.getText()),
                         Integer.parseInt(jft_Mental.getText()),
                         Integer.parseInt(jft_Vida.getText()))
         );
+        Jt_Nombre.setText("");
+        Jt_Poder.setText("");
+        Jt_Debilidad.setText("");
+        jft_Fuerza.setText("");
+        jft_Fisica.setText("");
+        jft_Mental.setText("");
+        jft_Vida.setText("");
+        
         System.out.println(personajes);
-    }//GEN-LAST:event_AgregarMouseClicked
+    }//GEN-LAST:event_Agregar3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -216,15 +277,16 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
     }
-
+    
     ArrayList<Personajes> personajes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Agregar;
-    private javax.swing.JLabel Agregar1;
+    private javax.swing.JLabel Agregar3;
+    private javax.swing.JLabel Batalla;
     private javax.swing.JTextField Jt_Debilidad;
     private javax.swing.JTextField Jt_Nombre;
     private javax.swing.JTextField Jt_Poder;
-    private javax.swing.JTextField Jt_Universo;
+    private javax.swing.JLabel Listar;
     private javax.swing.JLabel MainScree;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Poder;
@@ -235,6 +297,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel Poder5;
     private javax.swing.JLabel Poder6;
     private javax.swing.JLabel Poder7;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFormattedTextField jft_Fisica;
     private javax.swing.JFormattedTextField jft_Fuerza;
     private javax.swing.JFormattedTextField jft_Mental;
