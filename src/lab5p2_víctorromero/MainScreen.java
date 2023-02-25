@@ -48,9 +48,12 @@ public class MainScreen extends javax.swing.JFrame {
         Agregar1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         SimulBatalla = new javax.swing.JFrame();
+        jl_personajess1 = new javax.swing.JList();
         jl_personajess = new javax.swing.JList();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         Poder9 = new javax.swing.JLabel();
         Poder8 = new javax.swing.JLabel();
         Agregar2 = new javax.swing.JLabel();
@@ -121,6 +124,20 @@ public class MainScreen extends javax.swing.JFrame {
 
         SimulBatalla.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jl_personajess1.setModel(new DefaultListModel());
+        jl_personajess.setModel(new DefaultListModel());
+        jl_personajess1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_personajess1MouseClicked(evt);
+            }
+        });
+        jl_personajess1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jl_personajess1KeyPressed(evt);
+            }
+        });
+        SimulBatalla.getContentPane().add(jl_personajess1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 290, 160));
+
         jl_personajess.setModel(new DefaultListModel());
         jl_personajess.setModel(new DefaultListModel());
         jl_personajess.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,6 +167,12 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         SimulBatalla.getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 290, 30));
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea2);
+
+        SimulBatalla.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 480, 110));
 
         Poder9.setBackground(new java.awt.Color(255, 255, 255));
         Poder9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -523,9 +546,25 @@ public class MainScreen extends javax.swing.JFrame {
 
         if (jComboBox4.getSelectedIndex() >= 0) {
             DefaultListModel modelo
-                    = (DefaultListModel) jl_personajess.getModel();            
-            modelo.add(jComboBox4.getSelectedIndex(), jComboBox4.getSelectedItem() );
+                    = (DefaultListModel) jl_personajess.getModel();
+
+            for (Personajes personaje : personajes) {
+                if (jComboBox4.getSelectedItem() == "DC") {
+                    modelo.add(jComboBox4.getSelectedIndex(), personaje.getNombre());
+                }
+                if (jComboBox4.getSelectedItem() == "Marvel") {
+                    modelo.add(jComboBox4.getSelectedIndex(), personaje.getNombre());
+                }
+                if (jComboBox4.getSelectedItem() == "MK") {
+                    modelo.add(jComboBox4.getSelectedIndex(), personaje.getNombre());
+                }
+                if (jComboBox4.getSelectedItem() == "Caprom") {
+                    modelo.add(jComboBox4.getSelectedIndex(), personaje.getNombre());
+                }
+            }
+            jl_personajess.getSelectedValue();
             jl_personajess.setModel(modelo);
+
         }
 
 
@@ -545,6 +584,35 @@ public class MainScreen extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jl_personajessKeyPressed
+
+    private void jl_personajess1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_personajess1MouseClicked
+        if (jComboBox4.getSelectedIndex() >= 0) {
+            DefaultListModel modelo
+                    = (DefaultListModel) jl_personajess1.getModel();
+
+            for (Personajes personaje : personajes) {
+                if (jComboBox3.getSelectedItem() == "DC") {
+                    modelo.add(jComboBox3.getSelectedIndex(), personaje.getNombre());
+                }
+                if (jComboBox3.getSelectedItem() == "Marvel") {
+                    modelo.add(jComboBox3.getSelectedIndex(), personaje.getNombre());
+                }
+                if (jComboBox3.getSelectedItem() == "MK") {
+                    modelo.add(jComboBox3.getSelectedIndex(), personaje.getNombre());
+                }
+                if (jComboBox3.getSelectedItem() == "Caprom") {
+                    modelo.add(jComboBox3.getSelectedIndex(), personaje.getNombre());
+                }
+            }
+            jl_personajess1.getSelectedValue();
+            jl_personajess1.setModel(modelo);
+        }
+
+    }//GEN-LAST:event_jl_personajess1MouseClicked
+
+    private void jl_personajess1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jl_personajess1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jl_personajess1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -615,13 +683,16 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JFormattedTextField jft_Fisica;
     private javax.swing.JFormattedTextField jft_Fuerza;
     private javax.swing.JFormattedTextField jft_Mental;
     private javax.swing.JFormattedTextField jft_Vida;
     private javax.swing.JList jl_personajess;
+    private javax.swing.JList jl_personajess1;
     private javax.swing.JTree jt_Personajes;
     // End of variables declaration//GEN-END:variables
 }
