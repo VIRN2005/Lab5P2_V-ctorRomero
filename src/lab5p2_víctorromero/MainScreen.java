@@ -7,6 +7,7 @@ package lab5p2_víctorromero;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
@@ -296,6 +297,7 @@ public class MainScreen extends javax.swing.JFrame {
         jft_Vida.setText("");
 
         System.out.println(personajes);
+        JOptionPane.showMessageDialog(this, "Se ha agregado Exitosamente :D");
     }//GEN-LAST:event_jB_AgregarMouseClicked
 
     private void jB_Agregar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_Agregar1MouseClicked
@@ -348,36 +350,29 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jB_Agregar1ActionPerformed
     }
     private void jt_PersonajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_PersonajesMouseClicked
-        String n="";
-        try{
+        String n = "";
+        try {
             n = jt_Personajes.getSelectionPath().getLastPathComponent().toString();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("");
         }
-        
-      // String x = n.toString();
+
+        // String x = n.toString();
         System.out.println(n);
-        String nuilaGay="";
+        String nuilaGay = "";
         //esta line la puso Eduardo, no te enojes <3
         for (int i = 0; i < personajes.size(); i++) {
-            if(personajes.get(i).getNombre().equals(n)){
-                nuilaGay=personajes.get(i).toString();
+            if (personajes.get(i).getNombre().equals(n)) {
+                nuilaGay = personajes.get(i).toString();
             }
         }
-        
-        if (n.toString() != "DC" && n.toString() != "Marvel" && n.toString() != "Capcom" && n.toString() != "MK") {
+
         //   Personajes p = (Personajes) n;
-            jTextArea1.append(nuilaGay);
-//            jTextArea1.append(p.getPoder());
-//            jTextArea1.append(p.getDebilidad());
-//            jTextArea1.append(p.getUniverso());
-//            jTextArea1.append(p.getFuerza() + "");
-//            jTextArea1.append(p.getFuerza() + "");
-//            jTextArea1.append(p.getFuerza() + "");
-            jTextArea1.append("____________________________\n"
-                    + "");
-            
-        }
+        jTextArea1.append(nuilaGay);
+        jTextArea1.append("____________________________\n"
+                + "");
+
+
     }//GEN-LAST:event_jt_PersonajesMouseClicked
 
     /**
